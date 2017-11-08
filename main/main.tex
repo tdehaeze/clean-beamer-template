@@ -1,0 +1,64 @@
+\documentclass{beamer} 
+
+
+% =============================================================
+% CONFIGURATION FILES
+% =============================================================
+\input{../configuration/comon_packages.tex}
+\input{../configuration/sourcecode.tex}
+\input{../configuration/variables.tex}
+\input{../configuration/beamer.tex}
+\input{../configuration/conftikz.tex}
+
+% You can add your own package/configuration here
+\input{../configuration/custom_config.tex}
+% =============================================================
+
+\newcommand{\onlyinsubfile}[1]{#1}
+\newcommand{\notinsubfile}[1]{}
+
+% =============================================================
+% BEGIN DOCUMENT
+% =============================================================
+\begin{document}
+
+% change onlyinsubfile in order to know if we are compiling
+% the main document of not (subfiles class)
+\renewcommand{\onlyinsubfile}[1]{}
+\renewcommand{\notinsubfile}[1]{#1}
+
+% Should ref all documents from bib
+\nocite{*}
+
+% =============================================================
+% TITLE PAGE
+% =============================================================
+\subfile{../titlepage/titlepage.tex}
+% =============================================================
+
+% =============================================================
+% MAIN MATTER
+% =============================================================
+\subfile{../introduction/introduction.tex}
+\subfile{../section1/section1.tex}
+\subfile{../section2/section2.tex}
+% =============================================================
+
+\setbeamertemplate{footline}[customblank]
+
+\begin{frame}[standout]
+    Merci
+\end{frame}
+
+\appendix
+
+\setbeamertemplate{footline}[customappendix]
+
+\subfile{../appendix/appendix.tex}
+
+
+% =============================================================
+% END DOCUMENT
+% =============================================================
+\end{document}
+

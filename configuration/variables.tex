@@ -1,0 +1,134 @@
+% =============================================================
+% For the title page
+% =============================================================
+% Report
+\newcommand{\reportTitle}{Clean Beamer Template}
+\newcommand{\reportSubject}{Clean Beamer Template}
+\newcommand{\reportType}{How to use it?}
+\newcommand{\reportShortName}{TFE 2017}
+\newcommand{\reportDates}{\today}
+\newcommand{\reportAuthor}{Dehaeze Thomas}
+
+% Author
+\newcommand{\authorFirstName}{Thomas}
+\newcommand{\authorLastName}{Dehaeze}
+\newcommand{\authorEmail}{dehaeze.thomas@gmail.com}
+
+% Company One
+\newcommand{\companyOneName}{ESRF}
+\newcommand{\companyOnePlace}{Grenoble}
+\newcommand{\companyOneLogo}{logo-esrf.png}
+
+% Person One
+\newcommand{\personOnePosition}{Supervisor}
+\newcommand{\personOneFirstName}{Surname}
+\newcommand{\personOneLastName}{Name}
+\newcommand{\personOneEmail}{surname.name@domain.com}
+
+% Company Two
+\newcommand{\companyTwoName}{LTAS}
+\newcommand{\companyTwoPlace}{Liège}
+\newcommand{\companyTwoLogo}{logo-ltas.png}
+
+% Person Two
+\newcommand{\personTwoPosition}{Supervisor}
+\newcommand{\personTwoFirstName}{Surname}
+\newcommand{\personTwoLastName}{Name}
+\newcommand{\personTwoEmail}{name.surname@domain.com}
+
+\newcommand{\topLogo}{logo-ltas}
+% =============================================================
+
+
+% =============================================================
+% Other variables
+% =============================================================
+% changes the default title for the nomenclature
+\newcommand{\nomenlaturename}{Nomenclature}
+\newcommand{\bibliographyname}{Bibliography}
+\newcommand{\listoffiguresname}{List of figures}
+\newcommand{\listingscaptionname}{Source code}
+\newcommand{\listoflistingsname}{List of source code}
+% =============================================================
+
+
+% =============================================================
+% Path
+% =============================================================
+% Graphic Path
+\graphicspath{%
+    {../ressources/}%
+    {../ressources/pdf/}%
+    {../ressources/images/}%
+    {../ressources/logos/}%
+    {../ressources/tikz/}%
+}
+
+% Source code Path
+\newcommand{\codefolder}[1]{../ressources/code/#1}
+% =============================================================
+
+% =============================================================
+% Colors
+% =============================================================
+\definecolor{colorblack}{rgb}{0, 0, 0}
+\definecolor{colorblue}{rgb}{0, 0.4470, 0.7410}
+\definecolor{colorred}{rgb}{0.8500, 0.3250, 0.0980}
+\definecolor{coloryellow}{rgb}{0.9290, 0.6940, 0.1250}
+\definecolor{colorpurple}{rgb}{0.4940, 0.1840, 0.5560}
+\definecolor{colorgreen}{rgb}{0.4660, 0.6740, 0.1880}
+\definecolor{colorcyan}{rgb}{0.3010, 0.7450, 0.9330}
+\definecolor{colorbordeau}{rgb}{0.6350, 0.0780, 0.1840}
+
+% Main color
+\definecolor{maincolor}{RGB}{89, 9, 38}
+\definecolor{secondcolor}{RGB}{20, 9, 89}
+
+\definecolor{LightGray}{rgb}{0.45,0.5,0.45}
+% =============================================================
+
+
+% =============================================================
+% Some variable to customize theme
+% =============================================================
+% toogletrue to have a "fancy chapter" tooglefalse to don't
+\newtoggle{fancychapter}
+\toggletrue{fancychapter}
+
+% toogletrue to put section numbering into margin tooglefalse to don't
+\newtoggle{sectionmargin}
+\toggletrue{sectionmargin}
+
+% toogletrue to have a mini toc for each chapter tooglefalse to don't
+\newtoggle{minitocchapter}
+\toggletrue{minitocchapter}
+
+% toogletrue to print "Confidentiel"
+\newtoggle{isconfidential}
+\toggletrue{isconfidential}
+\newcommand{\confidential}{\color{maincolor}\textsc{confidential}}
+% =============================================================
+
+
+% =============================================================
+% Some usefull commands
+% =============================================================
+\newcommand{\customvrule}[0]{%
+    \begin{column}{0.02\textwidth}%
+        \includegraphics[height=0.9\textheight, keepaspectratio]{vert_line}%
+    \end{column}%
+}
+
+\newcommand{\customhrule}[0]{%
+    \includegraphics[width=\linewidth, keepaspectratio]{horiz_line}\hfill%
+}
+
+\newcommand{\ccaption}[1]{%
+    \\[2pt]{\centering\color{mycolor2}\small\textit{\underline{#1}}}
+}
+
+\newcommand{\cimportant}[1]{%
+    {\centering\color{mycolor2}\textbf{#1}}
+}
+% =============================================================
+

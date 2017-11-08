@@ -1,0 +1,79 @@
+\usepackage{appendixnumberbeamer} % Extra Slides
+
+\usetheme{metropolis}
+\metroset{
+    titleformat=regular,% regular, smallcaps, allsmallcaps, allcaps
+    sectionpage=none,% none, simple, progressbar
+    subsectionpage=none,% none, simple, progressbar
+    numbering=counter,% none, counter, fraction
+    progressbar=foot,% none, head, frametitle, foot
+    block=transparent,% transparent, fill
+    background=light% dark, light
+}
+
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+
+\addtobeamertemplate{frametitle}{}{%
+    \tikz[overlay,remember picture]
+        \node[at= (current page.north east), anchor=north east, inner sep=8pt] {
+            \includegraphics[height=0.5cm]{\topLogo}
+        };
+}
+
+\title{\reportTitle}
+
+\date{}% use subtitle instead
+
+\subtitle{\vspace{5pt} \textcolor{LightGray}{\reportType}}
+
+\author{\authorFirstName~\authorLastName\\[0.5cm]}
+
+\institute{
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft}
+            \textbf{\personOnePosition}\\
+            {\scshape \personOneLastName{}}~\textit{\personOneFirstName{}}\\
+            \href{mailto:\personOneEmail}{\personOneEmail}\\
+        \end{flushleft}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright}
+            \textbf{\personTwoPosition}\\
+            {\scshape \personTwoLastName{}}~\textit{\personTwoFirstName{}}\\
+            \href{mailto:\personTwoEmail}{\personTwoEmail}\\
+        \end{flushright}
+    \end{minipage}
+}
+
+\titlegraphic{
+    \tikz[overlay,remember picture]
+        \node[at= (current page.south east), anchor=south east, inner sep=15pt, shift={(-0.5, 0)}] {
+            \includegraphics[height=0.7cm]{\companyOneLogo}
+        };
+    \tikz[overlay,remember picture]
+    \node[at= (current page.south west), anchor=south west, inner sep=15pt, shift={(0.5, 0)}] {
+        \includegraphics[height=0.7cm]{\companyTwoLogo}
+        };
+}
+
+
+\defbeamertemplate{footline}{custom}{%
+    \makebox[0pt][l]{\quad}%
+    \hspace*{\fill}\confidential\hspace*{\fill}%
+    \llap{\normalsize{\color{black}\insertframenumber}\quad}
+    \vskip8pt%
+}
+\setbeamertemplate{footline}[custom]
+
+\defbeamertemplate{footline}{customblank}{%
+}
+
+\defbeamertemplate{footline}{customappendix}{%
+    \makebox[0pt][l]{\quad}%
+    \hspace*{\fill}\confidential\hspace*{\fill}%
+    \llap{\normalsize{\color{black}\insertframenumber}\quad}
+    \vskip8pt%
+}
+

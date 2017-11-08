@@ -1,0 +1,55 @@
+\documentclass[12pt,tikz]{standalone}
+
+\ifstandalone%
+    \usepackage{import}
+    \import{../../configuration/}{comon_packages.tex}%
+    \import{../../configuration/}{variables.tex}%
+    \import{../../configuration/}{conftikz.tex}%
+    \import{../../configuration/}{custom_config.tex}%
+\fi
+
+\begin{document}
+    \begin{circuitikz}[scale=0.8, font=\small]
+        % Structure exterieur
+        \draw[fill=black!30] (-4.3, -4.3) rectangle (4.3, 4.3);
+        % Structure interieur
+        \draw[fill=white] (-4.0, -4.0) rectangle (4.0, 4.0);
+
+        \draw[] (0, 4.3) node[above]{Structure};
+        
+        % Masse
+        \draw[fill=black!10] (-2, -2) rectangle (2, 2) {};
+
+        \draw[] (1.4, 2) to [damper=$D_{xy}/2$] ++ (2, 2);
+        \draw[] (2, 1.4) to [spring, l_=$k_{xy}/2$] ++ (2, 2);
+
+        \draw[] (-1.4, 2) to [damper, l_=$D_{yx}/2$] ++ (-2, 2);
+        \draw[] (-2, 1.4) to [spring=$k_{yx}/2$] ++ (-2, 2);
+
+        \draw[] (1.4, -2) to [damper, l_=$D_{yx}/2$] ++ (2, -2);
+        \draw[] (2, -1.4) to [spring=$k_{yx}/2$] ++ (2, -2);
+        
+        \draw[] (-1.4, -2) to [damper=$D_{xy}/2$] ++ (-2, -2);
+        \draw[] (-2, -1.4) to [spring, l_=$k_{xy}/2$] ++ (-2, -2);
+
+        \draw[] (0.4,-2) to [damper] ++ (0, -2);
+        \draw[] (-0.4,-2) to [spring] ++ (0, -2);
+        \draw[] (-2, 0.4) to [damper] ++ (-2, 0);
+        \draw[] (-2,-0.4) to [spring] ++ (-2, 0);
+        
+        \draw[] (0.4,2) to [damper] ++ (0, 2);
+        \draw[] (-0.4,2) to [spring] ++ (0, 2);
+        \draw[] (2,0.4) to [damper] ++ (2, 0);
+        \draw[] (2,-0.4) to [spring] ++ (2, 0);
+
+        \begin{scope}[shift={($(-1.7, -1.7) + (0.8, 0.5)$)}]
+            \draw[->] (0, 0) -- ++ (1.2, 0) node[above]{$x$};
+            \draw[->] (0, 0) -- ++ (0, 1.2) node[right]{$y$};
+            \draw (0, 0) circle (0.1) node[below right]{$z$};
+            \node[circle,fill=black,inner sep=0pt,minimum size=2pt] at (0, 0) {};
+            \draw[->] (-35:0.6) arc (-35:125:0.6) node[above]{$\displaystyle\vv{\Omega_z}$};
+        \end{scope}
+
+    \end{circuitikz}
+\end{document}
+
