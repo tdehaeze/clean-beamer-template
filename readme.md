@@ -14,16 +14,11 @@ It's the template I made for my master Thesis presentation. It can be easily cus
     * [Create a Tikz File](#create-a-tikz-file)
 * [Customization](#customization)
 * [Snippets and workflows](#snippets-and-workflows)
-    * [Chapter with a shorter name for the footer and the table of contents](#chapter-with-a-shorter-name-for-the-footer-and-the-table-of-contents)
-    * [Unnumbered chapter](#unnumbered-chapter)
-    * [Small table of contents for a chapter](#small-table-of-contents-for-a-chapter)
     * [Simple figure](#simple-figure)
     * [Subfigures](#subfigures)
     * [Wrap Figure](#wrap-figure)
     * [Insert Code](#insert-code)
     * [Tikz](#tikz)
-* [Ressources](#ressources)
-* [TO BE DONE](#to-be-done)
 
 <!-- vim-markdown-toc -->
 
@@ -129,40 +124,9 @@ Most of the customization can be done in `configuration/variables.tex`:
 - Title page logos and names
 - Colors
 - Name of list of source code, list of tables, table of contents, nomenclature, ...
-- Whether you want section numbering into margin (see image below)
-
-![Numbering into margin](./screenshot/number_inside_margin.png)
-
 
 
 ## Snippets and workflows
-
-
-### Chapter with a shorter name for the footer and the table of contents
-
-``` tex
-\chapter[Nom du chapitre dans le sommaire]{Nom du chapitre}%
-\chaptermark{Nom du chapitre pour le footer}%
-\label{chap:label-du-chapitre}
-```
-
-### Unnumbered chapter
-
-``` tex
-\chapter*{Nom du chapitre}%
-\label{chap:label-du-chapitre}
-\addcontentsline{toc}{chapter}{\protect\numberline{}Nom du chapitre}
-\unumeredchaptermark{Nom du chapitre}
-```
-
-### Small table of contents for a chapter
-
-``` tex
-\chapter{Nom du chapitre}
-\chaptertoc{}
-```
-
-![GitHub Logo](./screenshot/chapter_page.png)
 
 ### Simple figure
 
@@ -198,8 +162,6 @@ Most of the customization can be done in `configuration/variables.tex`:
 \end{figure}
 ```
 
-![GitHub Logo](./screenshot/sub_figures.png)
-
 
 ### Wrap Figure
 
@@ -211,9 +173,6 @@ Most of the customization can be done in `configuration/variables.tex`:
     \label{fig:wrapfig}
 \end{wrapfigure}
 ```
-
-![GitHub Logo](./screenshot/wrap_figure.png)
-
 
 ### Insert Code
 
@@ -231,8 +190,6 @@ def get_path_leaf(path):
 \label{lst:SPARQL Endpoint}
 \end{listing}
 ```
-
-![GitHub Logo](./screenshot/code.png)
 
 You can also insert directly a source code file (your file must be inside the `ressources/code/` folder)
 
@@ -297,22 +254,4 @@ You can then include it using `\includegraphics`.
 
 It will produce the exact same output but with no compilation time.
 
-
-## Ressources
-
-- http://ash.id.au/post/2014/09/19/thesis-in-latex/
-- https://github.com/derric/cleanthesis
-- http://texdoc.net/texmf-dist/doc/support/latexmk/latexmk.pdf
-- http://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/etoc/etoc.pdf
-
-
-## TO BE DONE
-
-- [ ] Utiliser la classe `scrbook` de `KOMA-script`
-- [x] Rajouter une variable pour permettre de faire un petit sommaire au début de chaque chapitre
-    - [ ] Quand on compile un chapitre tout seul, pas de TOC
-    - [ ] Renew la commande chapter pour ajouter automatiquement le chapter toc ?
-- [ ] Faire différentes catégories de bibliographie
-- [ ] Rajouter le template sur Overleaf et ShareLatex
-- [x] Rajouter un espace plus grand après les sous sections
 
