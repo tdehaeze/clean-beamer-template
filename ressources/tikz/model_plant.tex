@@ -1,0 +1,36 @@
+\documentclass[12pt,tikz]{standalone}
+
+\ifstandalone%
+    \usepackage{import}
+    \import{../../configuration/}{comon_packages.tex}%
+    \import{../../configuration/}{variables.tex}%
+    \import{../../configuration/}{conftikz.tex}%
+    \import{../../configuration/}{custom_config.tex}%
+\fi
+
+\begin{document}
+\begin{tikzpicture}[font={\footnotesize}]
+  
+        \node[draw, addsub, minimum size=0.7cm] (addsub) at (0, 0){};
+        
+        \node[draw, minimum height=1cm, minimum width=2.0cm] (controller) at ($(addsub.east) + (3, 0)$){Correcteur};
+        \node[draw, minimum height=1cm, minimum width=2.0cm] (plant) at ($(controller.east) + (3, 0)$){Système};
+         
+        \node[draw, minimum height=1cm, minimum width=2.0cm, style={align=center}] (controller_design) at ($(controller.north) + (0, 2)$){Synthèse\\Correcteur};
+        \node[draw, minimum height=1cm, minimum width=2.0cm, style={align=center}] (model_plant) at ($(plant.north) + (0, 2)$){Modèle du\\Système};
+
+        \draw[<-, >= latex] (addsub.west) -- ++(-1, 0);
+        
+        \draw[->, >= latex] (addsub) -- (controller);
+        \draw[->, >= latex] (controller) -- (plant);
+        \draw[->, >= latex] (plant.east) -- ++(1, 0);
+        \draw[] ($(plant.east) + (0.5, 0)$) -- ++(0, -2);
+        \draw[->, >= latex] ($(plant.east) + (0.5, -2)$) -| (addsub.south);
+        
+        \draw[->, >= latex, dashed] (plant) -- (model_plant);
+        \draw[->, >= latex, dashed] (controller_design) -- (controller);
+        \draw[->, >= latex, dashed] (model_plant) -- (controller_design);
+        \draw[<-, >= latex, dashed] (controller_design.west) -- ++(-1, 0) node[left, style={align=center}]{Performances\\Désirées};
+    \end{tikzpicture}
+\end{document}
+

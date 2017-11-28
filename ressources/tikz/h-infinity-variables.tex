@@ -1,0 +1,41 @@
+\documentclass[12pt,tikz]{standalone}
+
+\ifstandalone%
+    \usepackage{import}
+    \import{../../configuration/}{comon_packages.tex}%
+    \import{../../configuration/}{variables.tex}%
+    \import{../../configuration/}{conftikz.tex}%
+    \import{../../configuration/}{custom_config.tex}%
+\fi
+
+\begin{document}
+    \begin{tikzpicture}[font={\footnotesize}]
+        \coordinate (cons) at (0, 0);
+        \coordinate[left=0.7 of cons] (cons_signal);
+        \node[draw, addsub, minimum size=0.7cm, right=0.3 of cons] (addsub) {};
+        \node[draw, minimum height=1cm, minimum width=2.0cm, right=0.7 of addsub] (controller) {$K(s)$};
+        \node[draw, add, minimum size=0.7cm, right=0.7 of controller] (pert) {};
+        \node[draw, minimum height=1cm, minimum width=2.0cm, right=0.7 of pert] (plant) {$G(s)$};
+        \coordinate[right=0.7 of plant] (y);
+        \node[draw, addsub, minimum size=0.7cm, above=1.4 of y] (error) {};
+        \node[draw, add, minimum size=0.7cm, below=1.4 of y] (noise) {};
+        \coordinate[right=0.7 of noise] (noise_signal);
+        \coordinate[above=0.7 of pert] (pert_signal);
+        \coordinate[right=0.7 of error] (error_signal);
+        \coordinate (y_signal) at (y-|error_signal);
+        
+        \draw[->] (cons_signal)node[above right]{$c$} -- (addsub);
+        \draw[->] (addsub) -- (controller);
+        \draw[->] (controller) -- node[above]{$u$} (pert);
+        \draw[->] (pert) -- (plant);
+        \draw[->] (plant) -| (error);
+        \draw[->] (plant) -| (noise);
+        \draw[->] (cons) |- (error);
+        \draw[->] (noise) -| (addsub);
+        \draw[->] (noise_signal) node[above left]{$w$} -- (noise);
+        \draw[->] (pert_signal) node[right]{$p$} -- (pert);
+        \draw[->] (error) -- (error_signal) node[above left]{$\epsilon$};
+        \draw[->] (y) -- (y_signal) node[above left]{$y$};
+    \end{tikzpicture}
+\end{document}
+

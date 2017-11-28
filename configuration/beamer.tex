@@ -27,7 +27,10 @@
 
 \subtitle{\vspace{5pt} \textcolor{LightGray}{\reportType}}
 
-\author{\authorFirstName~\authorLastName\\[0.5cm]}
+\author{%
+  \authorFirstName~\authorLastName\\%
+  \href{mailto:\authorEmail}{\authorEmail}\\[0.5cm]%
+}
 
 \institute{
     \begin{minipage}{0.4\textwidth}
@@ -61,7 +64,7 @@
 
 \defbeamertemplate{footline}{custom}{%
     \makebox[0pt][l]{\quad}%
-    \hspace*{\fill}\confidential\hspace*{\fill}%
+    \iftoggle{isconfidential}{\hspace*{\fill}\confidential\hspace*{\fill}}{\hspace*{\fill}}%
     \llap{\normalsize{\color{black}\insertframenumber}\quad}
     \vskip8pt%
 }
@@ -72,7 +75,7 @@
 
 \defbeamertemplate{footline}{customappendix}{%
     \makebox[0pt][l]{\quad}%
-    \hspace*{\fill}\confidential\hspace*{\fill}%
+    \iftoggle{isconfidential}{\hspace*{\fill}\confidential\hspace*{\fill}}{\hspace*{\fill}}%
     \llap{\normalsize{\color{black}\insertframenumber}\quad}
     \vskip8pt%
 }

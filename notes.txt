@@ -1,0 +1,4 @@
+Essentially, the control system designer describes the desired responsiveness and noise-suppression properties by weighting the plant transfer function in the frequency domain; the resulting 'loop-shape' is then 'robustified' through optimization. Robustification usually has little effect at high and low frequencies, but the response around unity-gain crossover is adjusted to maximise the system's stability margins. H-infinity loop-shaping can be applied to multiple-input multiple-output (MIMO) systems.
+
+TODO:
+- Dire que y'a beaucoup de maths et que là je ne vais pas aller dans les détails. Je vais plutôt prendre le côté applicatif. Mais si besoin je peux donner pas mal de ressources.

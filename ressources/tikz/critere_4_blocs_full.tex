@@ -1,0 +1,45 @@
+\documentclass[12pt,tikz]{standalone}
+
+\ifstandalone%
+    \usepackage{import}
+    \import{../../configuration/}{comon_packages.tex}%
+    \import{../../configuration/}{variables.tex}%
+    \import{../../configuration/}{conftikz.tex}%
+    \import{../../configuration/}{custom_config.tex}%
+\fi
+
+\begin{document}
+    \begin{tikzpicture}[scale=1.0]
+        \node[draw, addsub, minimum size=0.7cm] (addsub) {};
+        \node[draw, minimum height=1.0cm, minimum width=1.5cm, left=1.0 of addsub, fill=black!40] (1) {$1/1$};
+        \node[draw, minimum height=1.5cm, minimum width=1.5cm, right=1.8 of addsub] (correcteur) {$K(s)$};
+        \node[draw, add, minimum size=0.7cm, right=1.8 of correcteur] (addcommand) {};
+        \node[draw, minimum height=1.5cm, minimum width=1.5cm, right=1.8 of addcommand] (system) {$G(s)$};
+
+        \node[draw, minimum height=1.0cm, minimum width=1.5cm, fill=black!40] (w1) at ($0.5*(correcteur.west) + 0.5*(addsub.east)     + (0, 1.5)$) {$W1(s)$};
+        \node[draw, minimum height=1.0cm, minimum width=1.5cm, fill=black!40] (w2) at ($0.5*(addcommand.west) + 0.5*(correcteur.east) + (0, 1.5)$) {$W2(s)$};
+        \node[draw, minimum height=1.0cm, minimum width=1.5cm, fill=black!40] (w3) at ($0.5*(system.west)     + 0.5*(addcommand.east) + (0, 1.5)$) {$W3(s)$};
+
+        \node[draw, add, minimum size=0.7cm] (addnoise) at ($(system.east) + (0.8, -1.5)$) {};
+        \node[draw, minimum height=1.0cm, minimum width=1.5cm, fill=black!40] (w4) at ($(addnoise) + (-1.5, -1.5)$) {$W4(s)$};
+
+        \draw[->] ($0.5*(correcteur.west) + 0.5*(addsub.east)    $) -- (w1);
+        \draw[->] ($0.5*(addcommand.west) + 0.5*(correcteur.east)$) -- (w2);
+        \draw[->] (w3) -| (addcommand.north) node[above right]{$p$};
+
+        \draw[->] (w1.north) -- ++(0, 0.6) node[right]{$z1$};
+        \draw[->] (w2.north) -- ++(0, 0.6) node[right]{$z2$};
+        \draw[<-] (w3.east) -- ++(0.6, 0) node[above]{$w2$};
+
+        \draw[<-] (1) -- ++(-1.5, 0)node[above right]{$w1$};
+        \draw[->] (1) -- (addsub) node[midway, above]{$c$};
+        \draw[->] (addsub) -- (correcteur.west) node[above left]{$\epsilon$};
+        \draw[->] (correcteur.east)node[above right]{$u$} -- (addcommand);
+        \draw[->] (addcommand) -- (system);
+        \draw[->] (system.east) node[above right]{$y$} -| (addnoise);
+        \draw[->] (addnoise.west) -| (addsub);
+        \draw[->] (w4.east) -| (addnoise);
+        \draw[<-] (w4.west) -- ++(-0.6, 0) node[above]{$w4$};
+    \end{tikzpicture}
+\end{document}
+

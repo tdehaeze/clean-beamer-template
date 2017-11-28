@@ -1,0 +1,63 @@
+\documentclass[12pt,tikz]{standalone}
+
+\ifstandalone%
+    \usepackage{import}
+    \import{../../configuration/}{comon_packages.tex}%
+    \import{../../configuration/}{variables.tex}%
+    \import{../../configuration/}{conftikz.tex}%
+    \import{../../configuration/}{custom_config.tex}%
+\fi
+
+\begin{document}
+    \begin{tikzpicture}[scale=1.0]
+
+        \begin{scope}[shift={(0, 0)}]
+            \draw[] (2.5, 1.0) node[]{$S = T_{c \rightarrow \epsilon}$};
+            \draw[fill=mycolor1!20] (-0.2, -2.5) rectangle (1.4, 0.5);
+            \draw[] (0.6, -0.5) node[]{$\sim GK^{-1}$};
+            \draw[fill=mycolor2!20] (3.6, -2.5) rectangle (5.2, 0.5);
+            \draw[] (4.5, -0.5) node[]{$\sim 1$};
+            \draw[fill=mycolor2!20] (2.5, 0.15) circle (0.15);
+            \draw[dashed] (-0.4, 0) -- (5.4, 0);
+            \draw [] (0,-2) to[out=45,in=180+45] (2,0) to[out=45,in=180] (2.5,0.3) to[out=0,in=180] (3.5,0) to[out=0,in=180] (5, 0);
+            \draw[dashed] (-0.5, -2.7) rectangle (5.5, 1.4);
+        \end{scope}
+
+        \begin{scope}[shift={(6.4, 0)}]
+            \draw[] (2.5, 1.0) node[]{$GS = T_{p \rightarrow \epsilon}$};
+            \draw[fill=mycolor1!20] (-0.2, -2.5) rectangle (1.4, 0.5);
+            \draw[] (0.6, -0.5) node[]{$\sim K^{-1}$};
+            \draw[fill=mycolor2!20] (3.6, -2.5) rectangle (5.2, 0.5);
+            \draw[] (4.5, -0.5) node[]{$\sim G$};
+            \draw[dashed] (-0.4, 0) -- (5.4, 0);
+            \draw [] (0,-2) to[out=45,in=180+45] (1, -1) to[out=45, in=180] (2.5,-0.2) to[out=0,in=180-45] (4,-1) to[out=-45,in=180-45] (5, -2);
+            \draw[dashed] (-0.5, -2.7) rectangle (5.5, 1.4);
+        \end{scope}
+
+        \begin{scope}[shift={(0, -4.4)}]
+            \draw[] (2.5, 1.0) node[]{$KS = T_{c \rightarrow u}$};
+            \draw[fill=mycolor2!20] (-0.2, -2.5) rectangle (1.4, 0.5);
+            \draw[] (0.6, -1.8) node[]{$\sim G^{-1}$};
+            \draw[fill=mycolor1!20] (3.6, -2.5) rectangle (5.2, 0.5);
+            \draw[] (4.5, -0.3) node[]{$\sim K$};
+            \draw[dashed] (-0.4, 0) -- (5.4, 0);
+            \draw [] (0,-1.5) to[out=45,in=180+45] (1, -0.5) to[out=45, in=180] (2.5,0.3) to[out=0,in=180-45] (4,-0.5) to[out=-45,in=180-45] (5, -1.5);
+            \draw[dashed] (-0.5, -2.7) rectangle (5.5, 1.4);
+        \end{scope}
+
+        \begin{scope}[shift={(6.4, -4.4)}]
+            \draw[] (2.5, 1.0) node[]{$T = T_{w \rightarrow u}$};
+            \draw[fill=mycolor2!20] (-0.2, -2.5) rectangle (1.4, 0.5);
+            \draw[] (0.6, -0.5) node[]{$\sim 1$};
+            \draw[fill=mycolor1!20] (3.6, -2.5) rectangle (5.2, 0.5);
+            \draw[] (4.5, -0.5) node[]{$\sim GK$};
+            \draw[fill=mycolor2!20] (2.5, 0.15) circle (0.15);
+            \draw[dashed] (-0.4, 0) -- (5.4, 0);
+            \draw [] (0,0) to[out=0,in=180] (1.5,0) to[out=0,in=180] (2.5,0.3) to[out=0,in=-45] (3,0) to[out=-45,in=180-45] (5, -2);
+            \draw[dashed] (-0.5, -2.7) rectangle (5.5, 1.4);
+        \end{scope}
+
+    \end{tikzpicture}
+\end{document}
+
+

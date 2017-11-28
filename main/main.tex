@@ -3,9 +3,9 @@
 
 % =============================================================
 % CONFIGURATION FILES
-% =============================================================
+% ============================================================
 \input{../configuration/comon_packages.tex}
-\input{../configuration/sourcecode.tex}
+% \input{../configuration/sourcecode.tex}
 \input{../configuration/variables.tex}
 \input{../configuration/beamer.tex}
 \input{../configuration/conftikz.tex}
@@ -36,25 +36,29 @@
 \subfile{../titlepage/titlepage.tex}
 % =============================================================
 
+\begin{frame}{$\hinf$ Lecture - Outline}
+    \tableofcontents[]
+\end{frame}
+
 % =============================================================
 % MAIN MATTER
 % =============================================================
-\subfile{../introduction/introduction.tex}
 \subfile{../section1/section1.tex}
 \subfile{../section2/section2.tex}
+\subfile{../section3/section3.tex}
 % =============================================================
 
 \setbeamertemplate{footline}[customblank]
 
-\begin{frame}[standout]
-    Merci
-\end{frame}
+% \begin{frame}[standout]
+%     Merci
+% \end{frame}
 
-\appendix
+% \appendix
 
-\setbeamertemplate{footline}[customappendix]
+% \setbeamertemplate{footline}[customappendix]
 
-\subfile{../appendix/appendix.tex}
+% \subfile{../appendix/appendix.tex}
 
 
 % =============================================================

@@ -49,8 +49,7 @@ pdf:
 else
 pdf:
 	mkdir -p main/build && cd main && \
-	latexmk -r $(MAINDIRECTORY)/.latexmkrc_main $(PREVIEW_CONTINUOUSLY) main.tex && \
-	(${PDFVIEWER} build/main.pdf &> /dev/null &)
+	latexmk -r $(MAINDIRECTORY)/.latexmkrc_main $(PREVIEW_CONTINUOUSLY) main.tex
 endif
 else
 ifeq ($(t), tikz)

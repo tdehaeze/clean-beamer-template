@@ -1,0 +1,26 @@
+\documentclass[12pt,tikz]{standalone}
+
+\ifstandalone%
+    \usepackage{import}
+    \import{../../configuration/}{comon_packages.tex}%
+    \import{../../configuration/}{variables.tex}%
+    \import{../../configuration/}{conftikz.tex}%
+    \import{../../configuration/}{custom_config.tex}%
+\fi
+
+\begin{document}
+    \begin{tikzpicture}[.style={font issue=\footnotesize}]
+        \node[draw, align=center, text width=2cm] (m_continu) at (0, 0) {Modèle continu};
+        \node[draw, align=center, text width=2cm] (m_discret) at (6, 0) {Modèle discret};
+        \node[draw, align=center, text width=2cm] (m_continu_eq) at (12, 0) {Modèle continu équivalent};
+        \node[draw, align=center, text width=2cm] (c_continu_eq) at (12, -4) {Correcteur continu équivalent};
+        \node[draw, align=center, text width=2cm] (c_discret) at (6, -4) {Correcteur discret};
+
+        \draw[->, >= latex, dashed, postaction={decorate,decoration={raise=1ex,text along path,text align=center,text={Synthese de correcteur}}}, postaction={decorate,decoration={raise=-2.5ex,text along path,text align=center,text={numerique}}}] (m_continu) to[bend right] (c_discret);
+        \draw[->, >= latex] (m_continu) -- node[above]{Discrétisation}node[below]{bloqueur ordre 0} (m_discret);
+        \draw[->, >= latex] (m_discret) -- node[above]{Transformation}node[below]{bilinéaire} (m_continu_eq);
+        \draw[->, >= latex] (m_continu_eq) -- node[left, align=center, text width=2cm]{Synthèse continue} (c_continu_eq);
+        \draw[->, >= latex] (c_continu_eq) -- node[above]{Transformation}node[below]{inverse} (c_discret);
+    \end{tikzpicture}
+\end{document}
+

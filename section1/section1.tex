@@ -3,26 +3,143 @@
 \begin{document}
 
 \onlyinsubfile{%
-
 }
 
 % ==================================================================
-% Section : 1
+% Section : Introduction
 % ==================================================================
-\section{Section 1}%
-\label{sec:modelisation}
+\section{Introduction}%
+\label{sec:introduction}
 
-\begin{frame}{Section 1 - Outline}
-    \tableofcontents[currentsection, hideothersubsections]
+\begin{frame}{Introduction - Outline}
+  \tableofcontents[currentsection, hideothersubsections]
 \end{frame}
 
 % ==================================================================
-\subsection{Tikz Picture}
-
-\begin{frame}{Tikz picture}
-    \centering
-    \includegraphics[width=\textwidth, height=0.8\textheight, keepaspectratio]{3dsignpost}
+\subsection{Classical and Modern control}
+\begin{frame}[t]{Classical and Modern Control}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \stitle{Classical control (1930)}\\\vspace{1em}
+      TF (input-output)\\
+      Nyquist, Bode, Black, \ldots\\
+      P-PI-PID, Phase lead-lag, \ldots\vspace{1em}
+      \begin{tcolorbox}[size=small, top=4pt, colback=green!5!white,colframe=green!75!black,title=Advantages]
+        \begin{itemize}
+        \item Stability
+        \item Performances
+        \item Robustness % TODO pas trop compris pourquoi
+        \end{itemize}
+      \end{tcolorbox}\vspace{1em}
+      \begin{tcolorbox}[size=small, colback=red!5!white,colframe=red!75!black,title=Disadvantages]
+        \begin{itemize}
+        \item Mannual methods
+        \item SISO
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \stitle{Modern Control (1960)}\\\vspace{1em}
+      State space representation\\
+      Optimal command\\
+      LQR-LQG\vspace{1em}
+      \begin{tcolorbox}[size=small, colback=green!5!white,colframe=green!75!black,title=Advantages]
+        \begin{itemize}
+        \item Automatic synthesis
+        \item MIMO
+        \item Optimisation problem
+        \end{itemize}
+      \end{tcolorbox}\vspace{1em}
+      \begin{tcolorbox}[size=small, colback=red!5!white,colframe=red!75!black,title=Disadvantages]
+        \begin{itemize}
+        \item Robustness
+        \item Perturbation rejection
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+  \end{columns}
 \end{frame}
+% ==================================================================
+
+
+% ==================================================================
+\subsection{H-infinity Synthesis}
+\begin{frame}[t]{\(\hinf\) Synthesis (1981 \(\rightarrow\) 1994)}
+  \begin{tcolorbox}[size=small, top=4pt, colback=green!5!white,colframe=green!75!black,title=Advantages]
+    \vspace{-1em}\begin{columns}
+      \begin{column}{0.5\textwidth}
+        \begin{itemize}
+        \item Stability
+        \item Performances
+        \item Robustness % TODO pas trop compris pourquoi
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        \begin{itemize}
+        \item Automatic synthesis
+        \item MIMO
+        \item Optimisation problem
+        \end{itemize}
+      \end{column}
+    \end{columns}
+  \end{tcolorbox}
+  \begin{tcolorbox}[size=small, top=4pt, colback=red!5!white,colframe=red!75!black,title=Disadvantages]
+    \begin{itemize}
+    \item Need for a reasonably good model of the system
+    \end{itemize}
+  \end{tcolorbox}
+  \begin{tcolorbox}[size=small, colback=blue!5!white,colframe=blue!75!black,title=Applications]
+    \begin{itemize}
+    \item \(\hinf\) control for the ARIANE 5 plus launcher
+    \item Vibration Control (Active suspension in cars)
+    \item Microelectronics: micromachined sensors
+    \end{itemize}
+  \end{tcolorbox}
+\end{frame}
+
+
+\begin{frame}{\(\hinf\) Syntesis - The philosophy}
+  \begin{overprint}
+    \onslide<1>\begin{tcolorbox}[size=small,
+      top=4pt,
+      halign=center,
+      colback=blue!5!white,
+      colframe=blue!50!black,
+      subtitle style={boxrule=0.4pt,
+        colback=blue!50!black},
+      title=\(\hinf\) Synthesis - Hypothesis]
+      Linear Time Invariant (LTI) models\\
+      Continous systems
+      \tcbsubtitle{It works in the frequency domain}
+      We have to \textbf{translate the specifications in the frequency domain}
+      \tcbsubtitle{It works on the \textbf{closed loop} tranfert functions}
+      It uses an algorithm to find a controller (\emph{if it exists}) so that the CL TF have the behaviour that we want
+      \tcbsubtitle{Selection of the weighting functions}
+      We have to determine the ''\emph{shapes}'' or the CL TF so that the behaviour of the system matches the specifications
+    \end{tcolorbox}
+    \onslide<2>\begin{tcolorbox}[size=small,
+      top=4pt,
+      halign=center,
+      colback=blue!5!white,
+      colframe=blue!50!black,
+      subtitle style={boxrule=0.4pt,
+        colback=blue!50!black},
+      title=\(\hinf\) Synthesis]
+      \begin{itemize}
+      \item Computer-Aided Control Systems Design
+      \item At the end, \(\hinf\) synthesis gives you a controller that can be as
+        simple as a PI or PID
+      \item Then we should analyse what is the controller obtained (leads, lags, \ldots)
+      \end{itemize}
+      \tcbsubtitle{Challenging part}
+      \begin{itemize}
+      \item Transform the problem into a standard \(\hinf\) problem
+      \item Translate the specifications into weighting functions
+      \end{itemize}
+    \end{tcolorbox}
+  \end{overprint}
+\end{frame}
+% ==================================================================
 
 \end{document}
 

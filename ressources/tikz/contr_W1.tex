@@ -1,0 +1,58 @@
+\documentclass[12pt,tikz]{standalone}
+
+\ifstandalone%
+    \usepackage{import}
+    \import{../../configuration/}{comon_packages.tex}%
+    \import{../../configuration/}{variables.tex}%
+    \import{../../configuration/}{conftikz.tex}%
+    \import{../../configuration/}{custom_config.tex}%
+
+    \setlength\fheight{5cm}
+    \setlength\fwidth{0.7\columnwidth}
+\fi
+
+\begin{document}
+    \begin{tikzpicture}
+
+    \begin{axis}[%
+    width=\fwidth,
+    height=\fheight,
+    at={(0\fwidth,0\fheight)},
+    scale only axis,
+    xmode=log,
+    xmin=0.01,
+    xmax=10000,
+    ymin=-80,
+    ymax=40,
+    ylabel={Magnitude ($dB$)},
+    xlabel={Frequency ($Hz$)},
+    xlabel style={font=\color{white!15!black}},
+    ylabel style={font=\color{white!15!black}},
+    ylabel shift=-6pt,
+    axis background/.style={fill=white},
+    axis x line*=bottom,
+    axis y line*=left,
+    xmajorgrids,
+    xminorgrids,
+    ymajorgrids,
+    yminorgrids
+    ]
+    \addplot [thick, color=mycolor1, forget plot]
+      table[row sep=crcr]{%
+        0.01 -60\\
+        0.1 -60\\
+        190 6\\
+        10000 6\\
+    };
+    \draw[<-] (0.05, -60) -- (0.1, -70);
+    \draw (0.1, -70) -- (2, -70) node[right, fill=white, draw]{$\SI{-60}{\decibel} \rightarrow$ \footnotesize{Static error}};
+    \draw[<-] (1, -40) -- (10, -40) node[right, fill=white, draw]{$\SI{20}{\decibel/dec} \rightarrow$ \footnotesize{Ref. track.}};
+    \draw[<-] (100, 0) -- (3, 0) node[left, fill=white, draw]{$\omega_c \rightarrow$ \footnotesize{Speed}};
+    
+    \draw[<-] (300, 6) -- (200, 20);
+    \draw (200, 20) -- (10, 20) node[left, fill=white, draw]{$\SI{6}{\decibel} \rightarrow$ \footnotesize{Module margin}};
+    \end{axis}
+    \end{tikzpicture}%
+\end{document}
+
+
