@@ -23,7 +23,7 @@ PDFVIEWER = evince
 endif
 
 ifeq ($(UNAME), Darwin)
-PDFVIEWER = open
+PDFVIEWER = mupdf-gl
 endif
 
 MAINDIRECTORY := $(shell pwd)
@@ -42,28 +42,28 @@ ifeq ($(t), tikz)
 pdf:
 	cd ressources/tikz/ && \
 	for file in *.tex; do \
-		latexmk -r $(MAINDIRECTORY)/.latexmkrc_subfiles $${file} && \
-		latexmk -r $(MAINDIRECTORY)/.latexmkrc_subfiles -c $${file} && \
+		latexmk -r "$(MAINDIRECTORY)/.latexmkrc_subfiles" $${file} && \
+		latexmk -r "$(MAINDIRECTORY)/.latexmkrc_subfiles" -c $${file} && \
 		pdfcrop "$${file%.tex}.pdf" "$${file%.tex}.pdf" ; \
 	done
 else
 pdf:
 	mkdir -p main/build && cd main && \
-	latexmk -r $(MAINDIRECTORY)/.latexmkrc_main $(PREVIEW_CONTINUOUSLY) main.tex
+	latexmk -r "$(MAINDIRECTORY)/.latexmkrc_main" $(PREVIEW_CONTINUOUSLY) main.tex
 endif
 else
 ifeq ($(t), tikz)
 pdf:
 	cd ressources/tikz/ && \
-	latexmk -r $(MAINDIRECTORY)/.latexmkrc_subfiles $(f) && \
-	latexmk -r $(MAINDIRECTORY)/.latexmkrc_subfiles -c $(f) && \
+	latexmk -r "$(MAINDIRECTORY)/.latexmkrc_subfiles" $(f) && \
+	latexmk -r "$(MAINDIRECTORY)/.latexmkrc_subfiles" -c $(f) && \
 	pdfcrop "$${f}.pdf" "$${f}.pdf" && \
 	(${PDFVIEWER} $${f}.pdf &> /dev/null &)
 else
 pdf:
 	cd $(f) && \
-	latexmk -r $(MAINDIRECTORY)/.latexmkrc_subfiles -bibtex $(f)/$(f) && \
-	latexmk -r $(MAINDIRECTORY)/.latexmkrc_subfiles -c && \
+	latexmk -r "$(MAINDIRECTORY)/.latexmkrc_subfiles" -bibtex $(f)/$(f) && \
+	latexmk -r "$(MAINDIRECTORY)/.latexmkrc_subfiles" -c && \
 	(${PDFVIEWER} $(f).pdf &> /dev/null &)
 endif
 endif
@@ -76,7 +76,7 @@ clean:
 else
 clean:
 	cd $(f) && \
-	latexmk -r $(MAINDIRECTORY)/.latexmkrc_subfiles -c
+	latexmk -r "$(MAINDIRECTORY)/.latexmkrc_subfiles" -c
 endif
 
 # OPEN
@@ -128,4 +128,5 @@ else
 tikz:
 	cp $(MAINDIRECTORY)/snippets/tikzpicture.tex $(MAINDIRECTORY)/ressources/tikz/$(f).tex
 endif
+
 
